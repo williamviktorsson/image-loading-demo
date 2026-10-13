@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="text-scale" content="scale" />
+		%sveltekit.head%
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<!--
+			Variant "window-load": hide the page until the browser's load event,
+			which only fires once every image on the page has finished.
+
+			DEMO ONLY: the `if` limits this to the /window-load route so the other
+			variants aren't affected. On a real site you drop the `if` and keep the two lines inside it.
+		-->
+		<script>
+			if (location.pathname.replace(/\/$/, '').endsWith('/window-load')) {
+				document.body.style.visibility = 'hidden';
+				addEventListener('load', () => (document.body.style.visibility = ''));
+			}
+		</script>
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
+</html>
